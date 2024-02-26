@@ -85,7 +85,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN });
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/auth/${endPoint}`,
+        `/api/v1/auth/${endPoint}`,
         currentUser,
         {
           headers: {
@@ -112,7 +112,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: EDIT_USER_BEGIN });
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/v1/auth/${endPoint}`,
+        `/api/v1/auth/${endPoint}`,
         currentUser,
         {
           headers: {
@@ -138,7 +138,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: CREATE_NOTE_BEGIN });
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/v1/notes`,
+        `/api/v1/notes`,
         data,
         {
           headers: {
@@ -164,7 +164,7 @@ const AppProvider = ({ children }) => {
   const getNotes = async () => {
     const { searchQuery, sort, category } = state;
 
-    let url = `http://localhost:5000/api/v1/notes?sort=${sort}&category=${category}`;
+    let url = `/api/v1/notes?sort=${sort}&category=${category}`;
     if (searchQuery) {
       url = url + `&search=${searchQuery}`;
     }
@@ -187,7 +187,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: DELETE_NOTE_BEGIN });
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/v1/notes/${id}`,
+        `/api/v1/notes/${id}`,
         {
           headers: {
             Authorization: `Bearer ${state.user.token}`,
